@@ -1,0 +1,21 @@
+apiVersion: v1 
+kind: Pod 
+metadata:
+  name: tolarations
+  labels:
+    purpose: "selector-demo"
+spec:
+  nodeSelector:
+    topology.kubernetes.io/zone: us-east-1b
+  containers:
+  - name: nginx
+    image: nginx
+  tolerations:
+  - key: "hardware"
+    operator: "gpu"
+    value: "value1"
+    effect: "NoSchedule"
+  - key: "hardware"
+    operator: "gpu"
+    value: "value1"
+    effect: "NoExecute"
